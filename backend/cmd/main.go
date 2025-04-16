@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
@@ -12,16 +13,20 @@ import (
 func init() {
 	// load .env
 
-	err := godotenv.Load(".env")
+	err := godotenv.Load()
 	if err != nil {
 		log.Fatal("Error loading .env file")
 	}
+	clientID := os.Getenv("GITHUB_CLIENT_ID")
+	clientSecret := os.Getenv("GITHUB_CLIENT_SECRET")
+	log.Println("Client ID:", clientID)
+	log.Println("Client Secret:", clientSecret)
 }
 
 func main() {
 	r := mux.NewRouter()
 
-	// Definição das rotas
+	// Routes
 	r.HandleFunc("/repos", getRepos).Methods("GET")
 	r.HandleFunc("/repos/{repo}/commits", getCommits).Methods("GET")
 	r.HandleFunc("/repos/{repo}/pulls", getPullRequests).Methods("GET")

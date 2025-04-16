@@ -6,19 +6,21 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/google/go-github/github"
 	"github.com/m00nk0d3/codePulse/internal/githubapi"
 	"github.com/m00nk0d3/codePulse/internal/helpers"
+	"golang.org/x/oauth2"
 )
 
 // HandleGitHubLogin redirects the user to GitHub for login
 func HandleGitHubLogin(w http.ResponseWriter, r *http.Request) {
-	authURL := helpers.OAuth2Config.AuthCodeURL("")
+	authURL := helpers.GetOAuth2Config().AuthCodeURL("")
 	http.Redirect(w, r, authURL, http.StatusFound)
 }
 
 // exchangeToken exchanges the authorization code for an access token
 func exchangeToken(code string) (*oauth2.Token, error) {
-	token, err := helpers.OAuth2Config.Exchange(context.Background(), code)
+	token, err := helpers.GetOAuth2Config().Exchange(context.Background(), code)
 	if err != nil {
 		log.Printf("Error exchanging token: %v", err)
 		return nil, err
