@@ -1,7 +1,7 @@
 
 # Codepulse
 
-Codepulse is a project with a Go backend and a planned Vite frontend.
+Codepulse will be a new way of looking at Github repos. 
 
 ## Backend
 
@@ -17,7 +17,7 @@ go run main.go
 
 ## Frontend
 
-A frontend built with Vite is planned for this project. Stay tuned for updates!
+A frontend will be served via HTMX 
 
 ## License
 
