@@ -1,7 +1,7 @@
 
 # Codepulse
 
-Codepulse will be a new way of looking at Github repos. 
+Codepulse will be a new way of looking at Github repos. Its a personal project of mine and lets see where this goes. 
 
 ## Backend
 
